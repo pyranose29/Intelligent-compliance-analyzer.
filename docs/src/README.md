@@ -1,4 +1,4 @@
-
+```json
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,3 +45,7 @@ public class ComplianceAgent {
         return "Low Risk: Clause identified and matches regulatory standards.";
     }
 }
+
+```
+
+
