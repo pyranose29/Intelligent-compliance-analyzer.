@@ -1,6 +1,7 @@
 A2A Communication Schema (JSON)
 Agents should communicate using a structured message format that includes a header (for routing) and a payload (for the actual data).
 
+```json
 {
   "header": {
     "sender": "ComplianceAnalysisAgent",
@@ -23,6 +24,8 @@ Agents should communicate using a structured message format that includes a head
     }
   }
 }
+```
+
 
 ```mermaid
 sequenceDiagram
@@ -43,9 +46,14 @@ sequenceDiagram
 ```
 
 The Request (Compliance Analysis Agent): The agent identifies that the user query involves complex policy interpretation. It pauses the user's chat thread and triggers the RiskAssessmentAgent by sending the EVALUATE_COMPLIANCE_GAP action.
+
+
 The Processing (Risk Assessment Agent): * It parses the retrieved_chunks from the message.
+
 It executes a query against the BigQuery MCP to fetch the "Standard Benchmarks" for GDPR Article 17.
+
 It compares the policy text (7 years) vs the requirement (Article 17 limits).
+
 The Response (Risk Assessment Agent): It returns a JSON object containing a risk_level and a justification string, which the ComplianceAnalysisAgent then uses to generate the final human-readable answer.
 
 
