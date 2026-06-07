@@ -1,4 +1,4 @@
-the A2A flow as a sequence of events:
+The A2A flow as a sequence of events:
 
 Step 1: Document Ingestion: The PDF Ingestion Agent watches for new documents. It extracts raw text, chunks it into smaller, meaningful segments, and uses an embedding model to convert text into vector representations.
 
@@ -9,3 +9,20 @@ Step 3: Query Processing: When an employee asks a question in the Compliance Cha
 Step 4: Risk Evaluation: The Compliance Analysis Agent then triggers the Risk Assessment Agent. This agent analyzes the retrieved text for potential violations or gaps based on internal policy benchmarks (often pulled via BigQuery MCP).
 
 Step 5: Reporting: Finally, the Report Generation Agent aggregates the retrieved facts and the risk assessment into a clean, human-readable summary.
+
+
+<img width="582" height="384" alt="Screenshot 2026-06-08 015159" src="https://github.com/user-attachments/assets/f62f0c5a-ea12-42f5-9dc3-b3139b286039" />
+
+```mermaid
+graph TD
+    User -->|Query| Agent1[Compliance Analysis Agent]
+    Agent1 -->|Search| MCP1[Vector Database MCP]
+    Agent1 -->|Evaluate| Agent2[Risk Assessment Agent]
+    Agent2 -->|Fetch| MCP2[BigQuery MCP]
+    Agent1 -->|Draft| Agent3[Report Generation Agent]
+    Agent3 -->|Result| User
+```
+
+
+
+
