@@ -1,4 +1,4 @@
-```json
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +38,6 @@ public class ComplianceAgent {
         chunks.add(content); 
         return chunks;
     }
-
-```
 
 
     private String triggerRiskAssessment(String context) {
